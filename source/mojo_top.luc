@@ -1,0 +1,606 @@
+module mojo_top (
+    input clk,              // 50MHz clock
+    input rst_n,            // reset button (active low)
+    output led [8],         // 8 user controllable LEDs
+    input cclk,             // configuration clock, AVR ready when high
+    output spi_miso,        // AVR SPI MISO
+    input spi_ss,           // AVR SPI Slave Select
+    input spi_mosi,         // AVR SPI MOSI
+    input spi_sck,          // AVR SPI Clock
+    output spi_channel [4], // AVR general purpose pins (used by default to select ADC channel)
+    input avr_tx,           // AVR TX (FPGA RX)
+    output avr_rx,          // AVR RX (FPGA TX)
+    input avr_rx_busy,      // AVR RX buffer full
+    output io_led [3][8],   // LEDs on IO Shield
+    output io_seg [8],      // 7-segment LEDs on IO Shield
+    output io_sel [4],      // Digit select on IO Shield
+    input io_button [5],    // 5 buttons on IO Shield
+    input io_dip [3][8]     // DIP switches on IO Shield
+  ) {
+  
+  sig rst;                  // reset signal
+  
+  .clk(clk) {
+    // The reset conditioner is used to synchronize the reset signal to the FPGA
+    // clock. This ensures the entire FPGA comes out of reset at the same time.
+    reset_conditioner reset_cond;
+    
+    
+    .rst(rst) {
+    
+      
+      dff counter[30]; //counter used to cycle through different states      
+      counter ctr (#SIZE(3), #DIV(16));//counter to light up led segments 
+     //defining state machine states
+      fsm state = {IDLE, ADDERTEST1,ADDERTEST1A, ADDERTEST2A,ADDERTEST2,ADDERTEST3,ADDERTEST4,ADDERERRORTEST, ADDERERROR,
+      BOOLEANTEST1, BOOLEANTEST2,BOOLEANTEST3, BOOLEANTEST4, BOOLEANERRORTEST,BOOLEANERROR, 
+        SHIFTTEST1,SHIFTTEST2,SHIFTTEST3, SHIFTERRORTEST,SHIFTERROR,
+        COMPTEST1, COMPTEST2,COMPTEST3,COMPTEST4,COMPTEST5,COMPTEST6,COMPTEST7, COMPERRORTEST, COMPERROR, END};
+    }
+  }
+  sig alufn[6]; //8-bit input alufn
+  sig a[8]; //8-bit input a 
+  sig b[8]; //8-bit input b
+  sig alu[8]; //8-bit output of alu
+  const X = 29;//constant used to control time before transitioning to next state (increase value to increase delay between states)
+
+  alu alu1;   //calling the alu module
+  
+  decimal3 decimal3; //module to convert 8-bit into decimal
+  seven_seg sevenseg3;// led segment 3
+  seven_seg sevenseg2;// led segment 2
+  seven_seg sevenseg1;// led segment 1
+  seven_seg sevenseg0;// led segment 0
+  
+  always {
+    
+    reset_cond.in = ~rst_n; // input raw inverted reset signal
+    rst = reset_cond.out;   // conditioned reset_cond
+    
+    spi_miso = bz;          // not using SPI
+    spi_channel = bzzzz;    // not using flags
+    avr_rx = bz;            // not using serial port
+    
+    
+    
+    led [6:1] = 6h00; //turning off LEDs[6:1] on mojo board
+    led[7] = alu1.overadd; //connecting addition overflow signal to led[7]
+    led[0] = alu1.v;  // connecting subtration overflow signal to led[0]
+    io_seg = 8hff;          // turn segments off
+    io_sel = 4hf;           // select no digits
+    
+    a = io_dip[0]; //right dip switch controls input a
+    b = io_dip[1]; //middle dip switch controls input b
+    alufn = io_dip[2][5:0]; // first 6-bits of left dip switch controls input alufn
+
+    // assigning inputs and output of alu    
+    alu1.alufn = alufn; // alufn input to alu module
+    alu1.a = a; //a input to alu module
+    alu1.b = b; //b input to alu module
+    alu = alu1.alu; //alu module output
+
+    io_led[2] = alu; // left leds show output of alu (8bits)
+    io_led[1] = io_dip[1]; // middle leds show input b (8bits)
+    io_led[0] = io_dip[0]; // right leds show input a (8bits)
+    
+    decimal3.a = alu; //8 bit output of alu converted into 3-digit decimal value
+    
+    // assigning decimal value to show up on led segments
+    sevenseg3.char = decimal3.out2; //displays 100's digit
+    sevenseg2.char = decimal3.out1; //displays 10's digit
+    sevenseg1.char = decimal3.out0; //displays 1's digit
+    sevenseg0.char = b1101; //does not display anything when in IDLE (normal functioning) state
+    
+    //STATEMACHINE FOR TEST CASES
+    case (state.q) {
+      state.IDLE: //normal functioning alu (without test)
+      counter.d = 0; //clock counter is 0 when in idle state
+        if (io_button[1] == 1){ //pressing "CENTER" button initiates transition to TEST states
+          state.d = state.ADDERTEST1; //transition to testing the alu
+        }
+        
+      state.ADDERTEST1: // ADDER Test case 1(ADD): 5+5 = 10
+      alu1.alufn = 6b0; //selects addition operation of alu
+      alu1.a = 8b101; //input a = 5
+      alu1.b = 8b101; //input a = 5
+      alu = alu1.alu; //assigns output of alu module to output of mojo
+      io_led[1] = 8b101; //center 8 leds display 8 bits of input b
+      io_led[0] = 8b101; //right 8 leds display 8 bits of input a
+      sevenseg0.char = b1010; //displays "A" to show testing of ADDER
+      counter.d = counter.q+1; //continually increases clock counter until delay time is over
+        if (counter.q[X]==1&&alu==8b1010){ //once counter reaches defined value, and output of ALU is equal to manually calculated value (CORRECT ANSWER)
+          counter.d = 0; //reset counter value to 0
+          state.d = state.ADDERTEST1A; //move on to next test case
+        }else if (counter.q[X] == 1 && alu!= 8b1010){ //once counter reachse defined value but output of value is not equal to calculated value (WRONG ANSWER)
+          counter.d=0; //reset counter value to 0
+          state.d=state.ADDERERROR;} //move to adder error state
+       
+        
+      state.ADDERTEST1A: // ADDER Test case 1A(ADD OVERFLOW): 65+64=129 (overflow) 8b10000001
+      alu1.alufn = 6b0; 
+      alu1.a = 8b1000001;
+      alu1.b = 8b1000000;
+      alu = alu1.alu;
+      io_led[1] = 8b1000000;
+      io_led[0] = 8b1000001;
+      sevenseg0.char = b1010;
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b10000001){
+          counter.d = 0;
+          state.d = state.ADDERTEST2;
+        }else if (counter.q[X] == 1 && alu!= 8b10000001){
+          counter.d=0;
+          state.d=state.ADDERERROR;}
+          
+        state.ADDERTEST2A: //ADDER Test case 2(SUB OVERFLOW): -74 - 70 = -144 (OVERFLOW)
+      alu1.alufn = 6b1; 
+      alu1.a = 8b10110110;
+      alu1.b = 8b1000110;
+      alu = alu1.alu;    
+      io_led[1] = 8b1000110;
+      io_led[0] = 8b10110110;
+      sevenseg0.char = b1010;  
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b01110000){
+          counter.d = 0;
+          state.d = state.ADDERTEST3;
+        }
+          
+        state.ADDERTEST2://ADDER Test case 3(SUB): 100-50 = 50
+      alu1.alufn = 6b1; 
+      alu1.a = 8b1100100;
+      alu1.b = 8b110010;
+      alu = alu1.alu;   
+      io_led[1] = 8b110010;
+      io_led[0] = 8b1100100; 
+      sevenseg0.char = b1010;  
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b110010){
+          counter.d = 0;
+          state.d = state.ADDERTEST2A;
+        }else if (counter.q[X] == 1 && alu!= 8b110010){
+          counter.d=0;
+          state.d=state.ADDERERROR;}
+        
+      /* ADDITIONAL TEST CASES
+                state.ADDERTEST5: //ADDER Test case 5(SUB): 20-17 = 3
+      alu1.alufn = 6b1; 
+      alu1.a = 8b10100;
+      alu1.b = 8b10001;
+      alu = alu1.alu; 
+      io_led[1] = 8b10001;
+      io_led[0] = 8b10100;
+      sevenseg0.char = b1010;      
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b11){
+          counter.d = 0;
+          state.d = state.ADDERTEST6;
+        }
+        
+      state.ADDERTEST6: //ADDER Test case 6(SUB): 100-1 = 99
+      alu1.alufn = 6b1; 
+      alu1.a = 8b1100100;
+      alu1.b = 8b1;
+      alu = alu1.alu; 
+      io_led[1] = 8b1;
+      io_led[0] = 8b1100100;
+      sevenseg0.char = b1010;      
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b1100011){
+          counter.d = 0;
+          state.d = state.ADDERTEST7;
+        }
+        
+        
+     state.ADDERTEST7: //ADDER Test case 7(MUL): 100*0 =0
+      alu1.alufn = 6b10; 
+      alu1.a = 8b1100100;
+      alu1.b = 8b0;
+      alu = alu1.alu; 
+      io_led[1] = 8b0;
+      io_led[0] = 8b1100100; 
+      sevenseg0.char = b1010;   
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b0){
+          counter.d = 0;
+          state.d = state.ADDERTEST8;
+        }
+        */
+      state.ADDERTEST3: //ADDER Test case 8(MUL): 5*8 =40
+      alu1.alufn = 6b10; 
+      alu1.a = 8b101;
+      alu1.b = 8b1000;
+      alu = alu1.alu; 
+      io_led[1] = 8b1000;
+      io_led[0] = 8b101;
+      sevenseg0.char = b1010;    
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b101000){
+          counter.d = 0;
+          state.d = state.ADDERTEST4;
+        }else if (counter.q[X] == 1 && alu!= 8b101000){
+          counter.d=0;
+          state.d=state.ADDERERROR;}
+        
+     state.ADDERTEST4: //ADDER Test case 9(MOD): 19MOD7 =5
+      alu1.alufn = 6b11; 
+      alu1.a = 8b10011;
+      alu1.b = 8b111;
+      alu = alu1.alu; 
+      io_led[1] = 8b111;
+      io_led[0] = 8b10011;    
+      sevenseg0.char = b1010; 
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b101){
+          counter.d = 0;
+          state.d = state.ADDERERRORTEST;
+        }else if (counter.q[X] == 1 && alu!= 8b101){
+          counter.d=0;
+          state.d=state.ADDERERROR;}
+        
+      state.ADDERERRORTEST://Simulated ADDER error test case: 5+7=12 (+1)
+      alu1.alufn = 6b0; 
+      alu1.a = 8b101;
+      alu1.b = 8b111;
+      alu = alu1.alu+1; //adding 1 to output of adder to create incorrect result
+      io_led[1] = 8b111;
+      io_led[0] = 8b101;    
+      sevenseg0.char = b1010; 
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b1100){ //if result is correct, move on to next test case
+          counter.d = 0;
+          state.d = state.BOOLEANTEST1;}
+        else if (counter.q[X] == 1 && alu!= 8b1100){ //else move to adder error state
+          counter.d=0;
+          state.d=state.ADDERERROR;}
+      
+      state.ADDERERROR: //ADDER ERROR
+      sevenseg3.char= b1100; //displays "E"
+      sevenseg2.char= b1110; //displays "r"
+      sevenseg1.char= b1110; //displays "r"
+      sevenseg0.char = b1010; //displays "A" to show that error is in ADDER unit
+      counter.d = counter.q+1;
+        if (counter.q[X]==1){ //once counter reaches defined value
+          counter.d = 0;
+          state.d = state.BOOLEANTEST1;} //move to test the next unit
+        
+        
+      state.BOOLEANTEST1: //BOOLEAN Test case 1(AND): 8b10110100 && 8b11101101 = 8b10100100
+      alu1.alufn = 6b11000; 
+      alu1.a = 8b10110100;
+      alu1.b = 8b11101101;
+      alu = alu1.alu; 
+      io_led[1] = 8b11101101;
+      io_led[0] = 8b10110100;
+      sevenseg0.char = b1000;    
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b10100100){
+          counter.d = 0;
+          state.d = state.BOOLEANTEST2;
+        }else if (counter.q[X] == 1 && alu!= 8b10100100){
+          counter.d=0;
+          state.d=state.BOOLEANERROR;}
+        
+      state.BOOLEANTEST2: //BOOLEAN Test case 2(OR): 8b10001100|| 8b00010110 = 8b10011110
+      alu1.alufn = 6b11110; 
+      alu1.a = 8b10001100;
+      alu1.b = 8b00010110;
+      alu = alu1.alu; 
+      io_led[1] = 8b00010110;
+      io_led[0] = 8b10001100;  
+      sevenseg0.char = b1000;           
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b10011110){
+          counter.d = 0;
+          state.d = state.BOOLEANTEST3;
+        }else if (counter.q[X] == 1 && alu!= 8b10011110){
+          counter.d=0;
+          state.d=state.BOOLEANERROR;}
+        
+      state.BOOLEANTEST3: //BOOLEAN Test case 3(XOR): 8b11110000 ^8b00110011 = 8b11000011
+      alu1.alufn = 6b10110; 
+      alu1.a = 8b11110000;
+      alu1.b = 8b00110011;
+      alu = alu1.alu; 
+      io_led[1] = 8b00110011;
+      io_led[0] = 8b11110000;  
+      sevenseg0.char = b1000;            
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b11000011){
+          counter.d = 0;
+          state.d = state.BOOLEANTEST4;
+        }else if (counter.q[X] == 1 && alu!= 8b11000011){
+          counter.d=0;
+          state.d=state.BOOLEANERROR;}
+        
+     state.BOOLEANTEST4: //BOOLEAN Test case 4("A"LDR): 8b11010100
+      alu1.alufn = 6b11010; 
+      alu1.a = 8b11010100;
+      alu1.b = 8b00110011;
+      alu = alu1.alu; 
+      io_led[1] = 8b00110011;
+      io_led[0] = 8b11010100; 
+      sevenseg0.char = b1000;            
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b11010100){
+          counter.d = 0;
+          state.d = state.SHIFTTEST1;
+        }else if (counter.q[X] == 1 && alu!= 8b11010100){
+          counter.d=0;
+          state.d=state.BOOLEANERROR;}
+        
+        
+      state.BOOLEANERRORTEST: //Simulated BOOLEAN error test case: 8b11010100 && 8b0 = 8b0 (+1)
+      alu1.alufn = 6b11000; 
+      alu1.a = 8b11010100;
+      alu1.b = 8b00000000;
+      alu = alu1.alu+1; //inserting error
+      io_led[1] = 8b00110011;
+      io_led[0] = 8b0; 
+      sevenseg0.char = b1000;            
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b0){
+          counter.d = 0;
+          state.d = state.SHIFTTEST1;
+        }else if (counter.q[X] == 1 && alu!= 8b0){
+          counter.d=0;
+          state.d=state.BOOLEANERROR;}
+                
+      state.BOOLEANERROR: //BOOLEAN ERROR
+      sevenseg3.char= b1100;
+      sevenseg2.char= b1110;
+      sevenseg1.char= b1110;
+      sevenseg0.char = b1000; 
+      counter.d = counter.q+1;
+        if (counter.q[X]==1){
+          counter.d = 0;
+          state.d = state.SHIFTTEST1;}       
+        
+     state.SHIFTTEST1: //SHIFTER Test case 1(SHIFT LEFT): 8b1111 << 4 = 8b11110000
+      alu1.alufn = 6b100000; 
+      alu1.a = 8b1111;
+      alu1.b = 8b100;
+      alu = alu1.alu; 
+      io_led[1] = 8b100;
+      io_led[0] = 8b1111; 
+      sevenseg0.char = b101;            
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b11110000){
+          counter.d = 0;
+          state.d = state.SHIFTTEST3;
+        }else if (counter.q[X] == 1 && alu!= 8b11110000){
+          counter.d=0;
+          state.d=state.SHIFTERROR;}
+          
+      state.SHIFTTEST2: //SHIFTER Test case 2(SHIFT RIGHT): 8b10110000 >> 2 = 8b101100
+      alu1.alufn = 6b100001; 
+      alu1.a = 8b10110000;
+      alu1.b = 8b10;
+      alu = alu1.alu; 
+      io_led[1] = 8b10;
+      io_led[0] = 8b10110000; 
+      sevenseg0.char = b101;            
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b101100){
+          counter.d = 0;
+          state.d = state.SHIFTTEST3;
+        }  else if (counter.q[X] == 1 && alu!= 8b101100){
+          counter.d=0;
+          state.d=state.SHIFTERROR;}
+        
+      state.SHIFTTEST3: //SHIFTER Test case 3(ARITHMETIC RIGHT SHIFT): 8b10110000 >>> 2 = 8b11101100
+      alu1.alufn = 6b100011; 
+      alu1.a = 8b10110000;
+      alu1.b = 8b10;
+      alu = alu1.alu; 
+      io_led[1] = 8b10;
+      io_led[0] = 8b10110000; 
+      sevenseg0.char = b101;            
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b11101100){
+          counter.d = 0;
+          state.d = state.SHIFTERRORTEST;
+        }  else if (counter.q[X] == 1 && alu!= 8b11101100){
+          counter.d=0;
+          state.d=state.SHIFTERROR;}
+          
+      state.SHIFTERRORTEST: //SHIFTER error test case : 8b01101000 >>> 2 = 8b00011010 (+1)
+      alu1.alufn = 6b100001; 
+      alu1.a = 8b01101000;
+      alu1.b = 8b10;
+      alu = alu1.alu+1; 
+      io_led[1] = 8b10;
+      io_led[0] = 8b01101000; 
+      sevenseg0.char = b101;            
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b00011010){
+          counter.d = 0;
+          state.d = state.SHIFTERRORTEST;
+        }  else if (counter.q[X] == 1 && alu!= 8b00011010){
+          counter.d=0;
+          state.d=state.SHIFTERROR;}
+                        
+      state.SHIFTERROR: //SHIFTER ERROR
+      sevenseg3.char= b1100;
+      sevenseg2.char= b1110;
+      sevenseg1.char= b1110;
+      sevenseg0.char = b101; 
+      counter.d = counter.q+1;
+        if (counter.q[X]==1){
+          counter.d = 0;
+          state.d = state.COMPTEST1;}   
+        
+        
+
+      state.COMPTEST1: //COMP Test case 1(CMPEQ): 8b10110100 == 8b10110100?, result = 8b1
+      alu1.alufn = 6b110011; 
+      alu1.a = 8b10110100;
+      alu1.b = 8b10110100;
+      alu = alu1.alu; 
+      io_led[1] = 8b10110100;
+      io_led[0] = 8b10110100; 
+      sevenseg0.char = b1011;            
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b1){
+          counter.d = 0;
+          state.d = state.COMPTEST2;
+        }  else if (counter.q[X] == 1 && alu!= 8b1){
+          counter.d=0;
+          state.d=state.COMPERROR;}  
+        
+      state.COMPTEST2: //COMP Test case 2(CMPEQ): 8b10110100 == 8b10110101?, result = 8b0
+      alu1.alufn = 6b110011; 
+      alu1.a = 8b10110100;
+      alu1.b = 8b10110101;
+      alu = alu1.alu; 
+      io_led[1] = 8b10110101;
+      io_led[0] = 8b10110100; 
+      sevenseg0.char = b1011;            
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b0){
+          counter.d = 0;
+          state.d = state.COMPTEST3;
+        }else if (counter.q[X] == 1 && alu!= 8b0){
+          counter.d=0;
+          state.d=state.COMPERROR;}            
+        
+      state.COMPTEST3: //COMP Test case 3(CMPLT): 8b10110100 < 8b10110101?, result = 8b1
+      alu1.alufn = 6b110101; 
+      alu1.a = 8b10110100;
+      alu1.b = 8b10110101;
+      alu = alu1.alu; 
+      io_led[1] = 8b10110101;
+      io_led[0] = 8b10110100; 
+      sevenseg0.char = b1011;            
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b1){
+          counter.d = 0;
+          state.d = state.COMPTEST4;
+        }else if (counter.q[X] == 1 && alu!= 8b1){
+          counter.d=0;
+          state.d=state.COMPERROR;}                      
+            
+      state.COMPTEST4: //COMP Test case 4(CMPLT): 8b10001 < 8b11?, result = 8b0
+      alu1.alufn = 6b110101; 
+      alu1.a = 8b10001;
+      alu1.b = 8b11;
+      alu = alu1.alu; 
+      io_led[1] = 8b11;
+      io_led[0] = 8b10001; 
+      sevenseg0.char = b1011;            
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b0){
+          counter.d = 0;
+          state.d = state.COMPTEST5; 
+        }else if (counter.q[X] == 1 && alu!= 8b0){
+          counter.d=0;
+          state.d=state.COMPERROR;}                                   
+        
+      state.COMPTEST5: //COMP Test case 5(CMPLE): 8b1001 <= 8b1001?, result = 8b1
+      alu1.alufn = 6b110111; 
+      alu1.a = 8b1001;
+      alu1.b = 8b1001;
+      alu = alu1.alu;     
+      io_led[1] = 8b1001;
+      io_led[0] = 8b1001; 
+      sevenseg0.char = b1011;            
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b1){
+          counter.d = 0;
+          state.d = state.COMPTEST6;
+        } else if (counter.q[X] == 1 && alu!= 8b1){
+          counter.d=0;
+          state.d=state.COMPERROR;}            
+        
+      state.COMPTEST6: //COMP Test case 6(CMPLE): 8b1 <= 8b1101?, result = 8b1
+      alu1.alufn = 6b110111; 
+      alu1.a = 8b1;
+      alu1.b = 8b1101;
+      alu = alu1.alu; 
+      io_led[1] = 8b1101;
+      io_led[0] = 8b1; 
+      sevenseg0.char = b1011;            
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b1){
+          counter.d = 0;
+          state.d = state.COMPTEST7;
+        }else if (counter.q[X] == 1 && alu!= 8b1){
+          counter.d=0;
+          state.d=state.COMPERROR;}           
+        
+        
+      state.COMPTEST7: //COMP Test case 6(CMPLE): 8b1111 <= 8b1101?, result = 8b0
+      alu1.alufn = 6b110111; 
+      alu1.a = 8b1111;
+      alu1.b = 8b1110;
+      alu = alu1.alu; 
+      io_led[1] = 8b1110;
+      io_led[0] = 8b1110; 
+      sevenseg0.char = b1011;            
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b0){
+          counter.d = 0;
+          state.d = state.COMPERRORTEST;
+        }else if (counter.q[X] == 1 && alu!= 8b0){
+          counter.d=0;
+          state.d=state.COMPERROR;} 
+            
+          
+      state.COMPERRORTEST: //COMP error test case ): 8b1111 == 8b1111?, result = 8b1
+      alu1.alufn = 6b110011; 
+      alu1.a = 8b1111;
+      alu1.b = 8b1111;
+      alu = alu1.alu+1; 
+      io_led[1] = 8b1111;
+      io_led[0] = 8b1111; 
+      sevenseg0.char = b1011;            
+      counter.d = counter.q+1;
+        if (counter.q[X] ==1&&alu==8b1){
+          counter.d = 0;
+          state.d = state.END;
+        }else if (counter.q[X] == 1 && alu!= 8b1){
+          counter.d=0;
+          state.d=state.COMPERROR;}     
+         
+          
+      state.COMPERROR: //COMPARE ERROR
+      sevenseg3.char= b1100;
+      sevenseg2.char= b1110;
+      sevenseg1.char= b1110;
+      sevenseg0.char = b1011; 
+      counter.d = counter.q+1;
+        if (counter.q[X]==1){
+          counter.d = 0;
+          state.d = state.END;}                                                         
+        
+      state.END: //DONE WITH TEST
+      sevenseg3.char= b1100;
+      sevenseg2.char= b1111;
+      sevenseg1.char= b0;
+      sevenseg0.char = b1101; 
+      counter.d = counter.q+1;
+        if (counter.q[X]==1){
+          counter.d = 0;
+          state.d = state.IDLE;} //return to statestate(IDLE state)
+    }
+    
+        // lighting up all led segments
+        case(ctr.value){
+      0:
+        io_seg =~sevenseg0.segs; 
+        io_sel = ~4b1;
+      1: 
+        io_seg=~sevenseg1.segs;
+        io_sel = ~4b10;
+      2:
+        io_seg =~sevenseg2.segs;          
+        io_sel = ~4b100;
+      3: 
+        io_seg=~sevenseg3.segs;
+        io_sel = ~4b1000;
+      default:
+        io_seg=~sevenseg0.segs;
+        io_sel = ~4b1;                
+    }
+}
+}

@@ -1,0 +1,2669 @@
+--------------------------------------------------------------------------------
+Release 14.7 Trace  (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+E:\XilinISE\14.7\ISE_DS\ISE\bin\nt64\unwrapped\trce.exe -intstyle ise -o
+mojo_top_0.twr -v 30 -l 30 mojo_top_0_routed.ncd mojo_top_0.pcf
+
+Design file:              mojo_top_0_routed.ncd
+Physical constraint file: mojo_top_0.pcf
+Device,package,speed:     xc6slx9,tqg144,C,-2 (PRODUCTION 1.23 2013-10-13)
+Report level:             verbose report, limited to 30 items per constraint
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:3412 - To improve timing, see the Timing Closure User Guide (UG612).
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+================================================================================
+Timing constraint: TS_clk = PERIOD TIMEGRP "clk" 50 MHz HIGH 50%;
+For more information, see Period Analysis in the Timing Closure User Guide (UG612).
+
+ 54744637 paths analyzed, 373 endpoints analyzed, 15 failing endpoints
+ 15 timing errors detected. (15 setup errors, 0 hold errors, 0 component switching limit errors)
+ Minimum period is  20.772ns.
+--------------------------------------------------------------------------------
+Slack:                  -0.772ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.737ns (Levels of Logic = 17)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D2      net (fanout=8)        0.794   M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D       Tilo                  0.254   M_state_q_FSM_FFd4_2
+                                                       Mmux_M_alu1_a61
+    SLICE_X12Y39.AX      net (fanout=16)       0.681   M_alu1_a[2]
+    SLICE_X12Y39.COUT    Taxcy                 0.248   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M0        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.A5       net (fanout=1)        0.925   alu1/adder1/n0035[0]
+    SLICE_X8Y22.COUT     Topcya                0.474   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<0>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X8Y23.CIN      net (fanout=1)        0.003   alu1/adder1/Mmux_sum3_rs_cy[3]
+    SLICE_X8Y23.BMUX     Tcinb                 0.310   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X10Y20.C6      net (fanout=4)        0.649   M_adder1_sum1[5]
+    SLICE_X10Y20.C       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       alu1/Mmux_alu78_1
+    SLICE_X10Y20.B4      net (fanout=4)        0.316   Mmux_alu78
+    SLICE_X10Y20.B       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       M_state_q_FSM_FFd2-In11
+    SLICE_X11Y21.A1      net (fanout=1)        0.928   M_state_q_FSM_FFd2-In12
+    SLICE_X11Y21.A       Tilo                  0.259   M_state_q_FSM_FFd3-In5
+                                                       M_state_q_FSM_FFd2-In8_SW0
+    SLICE_X13Y31.D5      net (fanout=1)        1.386   N108
+    SLICE_X13Y31.D       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In13
+    SLICE_X13Y31.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd2-In14
+    SLICE_X13Y31.C       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In14
+    SLICE_X13Y38.D3      net (fanout=4)        1.076   M_state_q_FSM_FFd2-In
+    SLICE_X13Y38.CLK     Tas                   0.264   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2-In_rt
+                                                       M_state_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.737ns (8.628ns logic, 12.109ns route)
+                                                       (41.6% logic, 58.4% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.752ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.717ns (Levels of Logic = 17)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D2      net (fanout=8)        0.794   M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D       Tilo                  0.254   M_state_q_FSM_FFd4_2
+                                                       Mmux_M_alu1_a61
+    SLICE_X12Y39.AX      net (fanout=16)       0.681   M_alu1_a[2]
+    SLICE_X12Y39.COUT    Taxcy                 0.248   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M0        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.A5       net (fanout=1)        0.925   alu1/adder1/n0035[0]
+    SLICE_X8Y22.COUT     Topcya                0.474   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<0>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X8Y23.CIN      net (fanout=1)        0.003   alu1/adder1/Mmux_sum3_rs_cy[3]
+    SLICE_X8Y23.AMUX     Tcina                 0.220   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X8Y21.D6       net (fanout=4)        0.401   M_adder1_sum1[4]
+    SLICE_X8Y21.D        Tilo                  0.254   Mmux_alu69
+                                                       alu1/Mmux_alu69_1
+    SLICE_X10Y20.B5      net (fanout=5)        0.615   Mmux_alu69
+    SLICE_X10Y20.B       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       M_state_q_FSM_FFd2-In11
+    SLICE_X11Y21.A1      net (fanout=1)        0.928   M_state_q_FSM_FFd2-In12
+    SLICE_X11Y21.A       Tilo                  0.259   M_state_q_FSM_FFd3-In5
+                                                       M_state_q_FSM_FFd2-In8_SW0
+    SLICE_X13Y31.D5      net (fanout=1)        1.386   N108
+    SLICE_X13Y31.D       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In13
+    SLICE_X13Y31.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd2-In14
+    SLICE_X13Y31.C       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In14
+    SLICE_X13Y38.D3      net (fanout=4)        1.076   M_state_q_FSM_FFd2-In
+    SLICE_X13Y38.CLK     Tas                   0.264   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2-In_rt
+                                                       M_state_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.717ns (8.557ns logic, 12.160ns route)
+                                                       (41.3% logic, 58.7% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.749ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.714ns (Levels of Logic = 16)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D2      net (fanout=8)        0.794   M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D       Tilo                  0.254   M_state_q_FSM_FFd4_2
+                                                       Mmux_M_alu1_a61
+    SLICE_X12Y39.AX      net (fanout=16)       0.681   M_alu1_a[2]
+    SLICE_X12Y39.COUT    Taxcy                 0.248   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M0        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.A5       net (fanout=1)        0.925   alu1/adder1/n0035[0]
+    SLICE_X8Y22.COUT     Topcya                0.474   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<0>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X8Y23.CIN      net (fanout=1)        0.003   alu1/adder1/Mmux_sum3_rs_cy[3]
+    SLICE_X8Y23.DMUX     Tcind                 0.320   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X12Y24.B6      net (fanout=8)        0.915   M_adder1_sum1[7]
+    SLICE_X12Y24.B       Tilo                  0.254   M_state_q_FSM_FFd4-In20
+                                                       alu1/Mmux_alu98_1
+    SLICE_X11Y21.A3      net (fanout=11)       1.161   Mmux_alu98
+    SLICE_X11Y21.A       Tilo                  0.259   M_state_q_FSM_FFd3-In5
+                                                       M_state_q_FSM_FFd2-In8_SW0
+    SLICE_X13Y31.D5      net (fanout=1)        1.386   N108
+    SLICE_X13Y31.D       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In13
+    SLICE_X13Y31.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd2-In14
+    SLICE_X13Y31.C       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In14
+    SLICE_X13Y38.D3      net (fanout=4)        1.076   M_state_q_FSM_FFd2-In
+    SLICE_X13Y38.CLK     Tas                   0.264   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2-In_rt
+                                                       M_state_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.714ns (8.422ns logic, 12.292ns route)
+                                                       (40.7% logic, 59.3% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.714ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd4_3 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.668ns (Levels of Logic = 16)
+  Clock Path Skew:      -0.011ns (0.186 - 0.197)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd4_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D2      net (fanout=8)        0.794   M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D       Tilo                  0.254   M_state_q_FSM_FFd4_2
+                                                       Mmux_M_alu1_a61
+    SLICE_X12Y39.AX      net (fanout=16)       0.681   M_alu1_a[2]
+    SLICE_X12Y39.COUT    Taxcy                 0.248   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M0        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.A5       net (fanout=1)        0.925   alu1/adder1/n0035[0]
+    SLICE_X8Y22.DMUX     Topad                 0.667   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<0>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X11Y20.B6      net (fanout=10)       0.621   M_adder1_sum1[3]
+    SLICE_X11Y20.B       Tilo                  0.259   M_state_q_FSM_FFd3-In17
+                                                       alu1/Mmux_alu59_1
+    SLICE_X8Y21.C5       net (fanout=8)        0.695   Mmux_alu59
+    SLICE_X8Y21.C        Tilo                  0.255   Mmux_alu69
+                                                       M_state_q_FSM_FFd4-In15_SW2
+    SLICE_X12Y24.D4      net (fanout=1)        0.942   N233
+    SLICE_X12Y24.D       Tilo                  0.254   M_state_q_FSM_FFd4-In20
+                                                       M_state_q_FSM_FFd4-In15
+    SLICE_X12Y24.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd4-In20
+    SLICE_X12Y24.C       Tilo                  0.255   M_state_q_FSM_FFd4-In20
+                                                       M_state_q_FSM_FFd4-In16_SW0
+    SLICE_X13Y27.A1      net (fanout=1)        0.937   N122
+    SLICE_X13Y27.A       Tilo                  0.259   M_state_q_FSM_FFd4-In11
+                                                       M_state_q_FSM_FFd4-In17
+    SLICE_X12Y38.A4      net (fanout=4)        1.240   M_state_q_FSM_FFd4-In
+    SLICE_X12Y38.CLK     Tas                   0.200   M_state_q_FSM_FFd1_3
+                                                       M_state_q_FSM_FFd4-In_rt
+                                                       M_state_q_FSM_FFd4_3
+    -------------------------------------------------  ---------------------------
+    Total                                     20.668ns (8.482ns logic, 12.186ns route)
+                                                       (41.0% logic, 59.0% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.712ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.677ns (Levels of Logic = 17)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D2      net (fanout=8)        0.794   M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D       Tilo                  0.254   M_state_q_FSM_FFd4_2
+                                                       Mmux_M_alu1_a61
+    SLICE_X12Y39.AX      net (fanout=16)       0.681   M_alu1_a[2]
+    SLICE_X12Y39.COUT    Taxcy                 0.248   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M1        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.B6       net (fanout=1)        0.856   alu1/adder1/n0035[1]
+    SLICE_X8Y22.COUT     Topcyb                0.483   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<1>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X8Y23.CIN      net (fanout=1)        0.003   alu1/adder1/Mmux_sum3_rs_cy[3]
+    SLICE_X8Y23.BMUX     Tcinb                 0.310   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X10Y20.C6      net (fanout=4)        0.649   M_adder1_sum1[5]
+    SLICE_X10Y20.C       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       alu1/Mmux_alu78_1
+    SLICE_X10Y20.B4      net (fanout=4)        0.316   Mmux_alu78
+    SLICE_X10Y20.B       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       M_state_q_FSM_FFd2-In11
+    SLICE_X11Y21.A1      net (fanout=1)        0.928   M_state_q_FSM_FFd2-In12
+    SLICE_X11Y21.A       Tilo                  0.259   M_state_q_FSM_FFd3-In5
+                                                       M_state_q_FSM_FFd2-In8_SW0
+    SLICE_X13Y31.D5      net (fanout=1)        1.386   N108
+    SLICE_X13Y31.D       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In13
+    SLICE_X13Y31.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd2-In14
+    SLICE_X13Y31.C       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In14
+    SLICE_X13Y38.D3      net (fanout=4)        1.076   M_state_q_FSM_FFd2-In
+    SLICE_X13Y38.CLK     Tas                   0.264   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2-In_rt
+                                                       M_state_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.677ns (8.637ns logic, 12.040ns route)
+                                                       (41.8% logic, 58.2% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.692ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.657ns (Levels of Logic = 17)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D2      net (fanout=8)        0.794   M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D       Tilo                  0.254   M_state_q_FSM_FFd4_2
+                                                       Mmux_M_alu1_a61
+    SLICE_X12Y39.AX      net (fanout=16)       0.681   M_alu1_a[2]
+    SLICE_X12Y39.COUT    Taxcy                 0.248   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M1        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.B6       net (fanout=1)        0.856   alu1/adder1/n0035[1]
+    SLICE_X8Y22.COUT     Topcyb                0.483   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<1>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X8Y23.CIN      net (fanout=1)        0.003   alu1/adder1/Mmux_sum3_rs_cy[3]
+    SLICE_X8Y23.AMUX     Tcina                 0.220   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X8Y21.D6       net (fanout=4)        0.401   M_adder1_sum1[4]
+    SLICE_X8Y21.D        Tilo                  0.254   Mmux_alu69
+                                                       alu1/Mmux_alu69_1
+    SLICE_X10Y20.B5      net (fanout=5)        0.615   Mmux_alu69
+    SLICE_X10Y20.B       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       M_state_q_FSM_FFd2-In11
+    SLICE_X11Y21.A1      net (fanout=1)        0.928   M_state_q_FSM_FFd2-In12
+    SLICE_X11Y21.A       Tilo                  0.259   M_state_q_FSM_FFd3-In5
+                                                       M_state_q_FSM_FFd2-In8_SW0
+    SLICE_X13Y31.D5      net (fanout=1)        1.386   N108
+    SLICE_X13Y31.D       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In13
+    SLICE_X13Y31.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd2-In14
+    SLICE_X13Y31.C       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In14
+    SLICE_X13Y38.D3      net (fanout=4)        1.076   M_state_q_FSM_FFd2-In
+    SLICE_X13Y38.CLK     Tas                   0.264   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2-In_rt
+                                                       M_state_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.657ns (8.566ns logic, 12.091ns route)
+                                                       (41.5% logic, 58.5% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.689ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.654ns (Levels of Logic = 17)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X15Y39.A1      net (fanout=8)        0.818   M_state_q_FSM_FFd2_1
+    SLICE_X15Y39.A       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/N581
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_185_o141
+    SLICE_X12Y39.CX      net (fanout=2)        0.700   alu1/adder1/a[7]_b[7]_div_7/a[4]_GND_7_o_MUX_181_o
+    SLICE_X12Y39.COUT    Tcxcy                 0.117   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M0        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.A5       net (fanout=1)        0.925   alu1/adder1/n0035[0]
+    SLICE_X8Y22.COUT     Topcya                0.474   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<0>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X8Y23.CIN      net (fanout=1)        0.003   alu1/adder1/Mmux_sum3_rs_cy[3]
+    SLICE_X8Y23.BMUX     Tcinb                 0.310   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X10Y20.C6      net (fanout=4)        0.649   M_adder1_sum1[5]
+    SLICE_X10Y20.C       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       alu1/Mmux_alu78_1
+    SLICE_X10Y20.B4      net (fanout=4)        0.316   Mmux_alu78
+    SLICE_X10Y20.B       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       M_state_q_FSM_FFd2-In11
+    SLICE_X11Y21.A1      net (fanout=1)        0.928   M_state_q_FSM_FFd2-In12
+    SLICE_X11Y21.A       Tilo                  0.259   M_state_q_FSM_FFd3-In5
+                                                       M_state_q_FSM_FFd2-In8_SW0
+    SLICE_X13Y31.D5      net (fanout=1)        1.386   N108
+    SLICE_X13Y31.D       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In13
+    SLICE_X13Y31.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd2-In14
+    SLICE_X13Y31.C       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In14
+    SLICE_X13Y38.D3      net (fanout=4)        1.076   M_state_q_FSM_FFd2-In
+    SLICE_X13Y38.CLK     Tas                   0.264   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2-In_rt
+                                                       M_state_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.654ns (8.502ns logic, 12.152ns route)
+                                                       (41.2% logic, 58.8% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.689ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.654ns (Levels of Logic = 16)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D2      net (fanout=8)        0.794   M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D       Tilo                  0.254   M_state_q_FSM_FFd4_2
+                                                       Mmux_M_alu1_a61
+    SLICE_X12Y39.AX      net (fanout=16)       0.681   M_alu1_a[2]
+    SLICE_X12Y39.COUT    Taxcy                 0.248   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M1        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.B6       net (fanout=1)        0.856   alu1/adder1/n0035[1]
+    SLICE_X8Y22.COUT     Topcyb                0.483   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<1>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X8Y23.CIN      net (fanout=1)        0.003   alu1/adder1/Mmux_sum3_rs_cy[3]
+    SLICE_X8Y23.DMUX     Tcind                 0.320   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X12Y24.B6      net (fanout=8)        0.915   M_adder1_sum1[7]
+    SLICE_X12Y24.B       Tilo                  0.254   M_state_q_FSM_FFd4-In20
+                                                       alu1/Mmux_alu98_1
+    SLICE_X11Y21.A3      net (fanout=11)       1.161   Mmux_alu98
+    SLICE_X11Y21.A       Tilo                  0.259   M_state_q_FSM_FFd3-In5
+                                                       M_state_q_FSM_FFd2-In8_SW0
+    SLICE_X13Y31.D5      net (fanout=1)        1.386   N108
+    SLICE_X13Y31.D       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In13
+    SLICE_X13Y31.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd2-In14
+    SLICE_X13Y31.C       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In14
+    SLICE_X13Y38.D3      net (fanout=4)        1.076   M_state_q_FSM_FFd2-In
+    SLICE_X13Y38.CLK     Tas                   0.264   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2-In_rt
+                                                       M_state_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.654ns (8.431ns logic, 12.223ns route)
+                                                       (40.8% logic, 59.2% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.674ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.639ns (Levels of Logic = 17)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D2      net (fanout=8)        0.794   M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D       Tilo                  0.254   M_state_q_FSM_FFd4_2
+                                                       Mmux_M_alu1_a61
+    SLICE_X12Y39.AX      net (fanout=16)       0.681   M_alu1_a[2]
+    SLICE_X12Y39.CMUX    Taxc                  0.391   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X14Y37.D5      net (fanout=4)        0.709   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[4]
+    SLICE_X14Y37.D       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/a[4]_GND_7_o_MUX_201_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o141
+    SLICE_X10Y36.DX      net (fanout=2)        1.070   alu1/adder1/a[7]_b[7]_div_7/a[4]_GND_7_o_MUX_201_o
+    SLICE_X10Y36.COUT    Tdxcy                 0.121   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_cy[4]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_cy<4>
+    SLICE_X10Y37.CIN     net (fanout=1)        0.003   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_cy[4]
+    SLICE_X10Y37.BMUX    Tcinb                 0.277   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_15_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y41.A3      net (fanout=1)        0.838   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_15_OUT[6]
+    SLICE_X11Y41.A       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/N639
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2_SW0
+    SLICE_X10Y38.B6      net (fanout=2)        0.573   alu1/adder1/a[7]_b[7]_div_7/N34
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M0        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.A5       net (fanout=1)        0.925   alu1/adder1/n0035[0]
+    SLICE_X8Y22.COUT     Topcya                0.474   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<0>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X8Y23.CIN      net (fanout=1)        0.003   alu1/adder1/Mmux_sum3_rs_cy[3]
+    SLICE_X8Y23.BMUX     Tcinb                 0.310   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X10Y20.C6      net (fanout=4)        0.649   M_adder1_sum1[5]
+    SLICE_X10Y20.C       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       alu1/Mmux_alu78_1
+    SLICE_X10Y20.B4      net (fanout=4)        0.316   Mmux_alu78
+    SLICE_X10Y20.B       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       M_state_q_FSM_FFd2-In11
+    SLICE_X11Y21.A1      net (fanout=1)        0.928   M_state_q_FSM_FFd2-In12
+    SLICE_X11Y21.A       Tilo                  0.259   M_state_q_FSM_FFd3-In5
+                                                       M_state_q_FSM_FFd2-In8_SW0
+    SLICE_X13Y31.D5      net (fanout=1)        1.386   N108
+    SLICE_X13Y31.D       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In13
+    SLICE_X13Y31.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd2-In14
+    SLICE_X13Y31.C       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In14
+    SLICE_X13Y38.D3      net (fanout=4)        1.076   M_state_q_FSM_FFd2-In
+    SLICE_X13Y38.CLK     Tas                   0.264   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2-In_rt
+                                                       M_state_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.639ns (8.714ns logic, 11.925ns route)
+                                                       (42.2% logic, 57.8% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.673ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd4_3 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.627ns (Levels of Logic = 16)
+  Clock Path Skew:      -0.011ns (0.186 - 0.197)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd4_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D2      net (fanout=8)        0.794   M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D       Tilo                  0.254   M_state_q_FSM_FFd4_2
+                                                       Mmux_M_alu1_a61
+    SLICE_X12Y39.AX      net (fanout=16)       0.681   M_alu1_a[2]
+    SLICE_X12Y39.COUT    Taxcy                 0.248   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M1        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.B6       net (fanout=1)        0.856   alu1/adder1/n0035[1]
+    SLICE_X8Y22.DMUX     Topbd                 0.695   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<1>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X11Y20.B6      net (fanout=10)       0.621   M_adder1_sum1[3]
+    SLICE_X11Y20.B       Tilo                  0.259   M_state_q_FSM_FFd3-In17
+                                                       alu1/Mmux_alu59_1
+    SLICE_X8Y21.C5       net (fanout=8)        0.695   Mmux_alu59
+    SLICE_X8Y21.C        Tilo                  0.255   Mmux_alu69
+                                                       M_state_q_FSM_FFd4-In15_SW2
+    SLICE_X12Y24.D4      net (fanout=1)        0.942   N233
+    SLICE_X12Y24.D       Tilo                  0.254   M_state_q_FSM_FFd4-In20
+                                                       M_state_q_FSM_FFd4-In15
+    SLICE_X12Y24.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd4-In20
+    SLICE_X12Y24.C       Tilo                  0.255   M_state_q_FSM_FFd4-In20
+                                                       M_state_q_FSM_FFd4-In16_SW0
+    SLICE_X13Y27.A1      net (fanout=1)        0.937   N122
+    SLICE_X13Y27.A       Tilo                  0.259   M_state_q_FSM_FFd4-In11
+                                                       M_state_q_FSM_FFd4-In17
+    SLICE_X12Y38.A4      net (fanout=4)        1.240   M_state_q_FSM_FFd4-In
+    SLICE_X12Y38.CLK     Tas                   0.200   M_state_q_FSM_FFd1_3
+                                                       M_state_q_FSM_FFd4-In_rt
+                                                       M_state_q_FSM_FFd4_3
+    -------------------------------------------------  ---------------------------
+    Total                                     20.627ns (8.510ns logic, 12.117ns route)
+                                                       (41.3% logic, 58.7% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.669ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.634ns (Levels of Logic = 17)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X15Y39.A1      net (fanout=8)        0.818   M_state_q_FSM_FFd2_1
+    SLICE_X15Y39.A       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/N581
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_185_o141
+    SLICE_X12Y39.CX      net (fanout=2)        0.700   alu1/adder1/a[7]_b[7]_div_7/a[4]_GND_7_o_MUX_181_o
+    SLICE_X12Y39.COUT    Tcxcy                 0.117   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M0        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.A5       net (fanout=1)        0.925   alu1/adder1/n0035[0]
+    SLICE_X8Y22.COUT     Topcya                0.474   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<0>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X8Y23.CIN      net (fanout=1)        0.003   alu1/adder1/Mmux_sum3_rs_cy[3]
+    SLICE_X8Y23.AMUX     Tcina                 0.220   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X8Y21.D6       net (fanout=4)        0.401   M_adder1_sum1[4]
+    SLICE_X8Y21.D        Tilo                  0.254   Mmux_alu69
+                                                       alu1/Mmux_alu69_1
+    SLICE_X10Y20.B5      net (fanout=5)        0.615   Mmux_alu69
+    SLICE_X10Y20.B       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       M_state_q_FSM_FFd2-In11
+    SLICE_X11Y21.A1      net (fanout=1)        0.928   M_state_q_FSM_FFd2-In12
+    SLICE_X11Y21.A       Tilo                  0.259   M_state_q_FSM_FFd3-In5
+                                                       M_state_q_FSM_FFd2-In8_SW0
+    SLICE_X13Y31.D5      net (fanout=1)        1.386   N108
+    SLICE_X13Y31.D       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In13
+    SLICE_X13Y31.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd2-In14
+    SLICE_X13Y31.C       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In14
+    SLICE_X13Y38.D3      net (fanout=4)        1.076   M_state_q_FSM_FFd2-In
+    SLICE_X13Y38.CLK     Tas                   0.264   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2-In_rt
+                                                       M_state_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.634ns (8.431ns logic, 12.203ns route)
+                                                       (40.9% logic, 59.1% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.669ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd4_2 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.626ns (Levels of Logic = 15)
+  Clock Path Skew:      -0.008ns (0.189 - 0.197)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd4_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D2      net (fanout=8)        0.794   M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D       Tilo                  0.254   M_state_q_FSM_FFd4_2
+                                                       Mmux_M_alu1_a61
+    SLICE_X12Y39.AX      net (fanout=16)       0.681   M_alu1_a[2]
+    SLICE_X12Y39.COUT    Taxcy                 0.248   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M0        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.A5       net (fanout=1)        0.925   alu1/adder1/n0035[0]
+    SLICE_X8Y22.DMUX     Topad                 0.667   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<0>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X11Y20.B6      net (fanout=10)       0.621   M_adder1_sum1[3]
+    SLICE_X11Y20.B       Tilo                  0.259   M_state_q_FSM_FFd3-In17
+                                                       alu1/Mmux_alu59_1
+    SLICE_X8Y21.C5       net (fanout=8)        0.695   Mmux_alu59
+    SLICE_X8Y21.C        Tilo                  0.255   Mmux_alu69
+                                                       M_state_q_FSM_FFd4-In15_SW2
+    SLICE_X12Y24.D4      net (fanout=1)        0.942   N233
+    SLICE_X12Y24.D       Tilo                  0.254   M_state_q_FSM_FFd4-In20
+                                                       M_state_q_FSM_FFd4-In15
+    SLICE_X12Y24.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd4-In20
+    SLICE_X12Y24.C       Tilo                  0.255   M_state_q_FSM_FFd4-In20
+                                                       M_state_q_FSM_FFd4-In16_SW0
+    SLICE_X13Y27.A1      net (fanout=1)        0.937   N122
+    SLICE_X13Y27.A       Tilo                  0.259   M_state_q_FSM_FFd4-In11
+                                                       M_state_q_FSM_FFd4-In17
+    SLICE_X12Y37.AX      net (fanout=4)        1.313   M_state_q_FSM_FFd4-In
+    SLICE_X12Y37.CLK     Tdick                 0.085   M_state_q_FSM_FFd4_2
+                                                       M_state_q_FSM_FFd4_2
+    -------------------------------------------------  ---------------------------
+    Total                                     20.626ns (8.367ns logic, 12.259ns route)
+                                                       (40.6% logic, 59.4% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.666ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.631ns (Levels of Logic = 16)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X15Y39.A1      net (fanout=8)        0.818   M_state_q_FSM_FFd2_1
+    SLICE_X15Y39.A       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/N581
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_185_o141
+    SLICE_X12Y39.CX      net (fanout=2)        0.700   alu1/adder1/a[7]_b[7]_div_7/a[4]_GND_7_o_MUX_181_o
+    SLICE_X12Y39.COUT    Tcxcy                 0.117   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M0        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.A5       net (fanout=1)        0.925   alu1/adder1/n0035[0]
+    SLICE_X8Y22.COUT     Topcya                0.474   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<0>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X8Y23.CIN      net (fanout=1)        0.003   alu1/adder1/Mmux_sum3_rs_cy[3]
+    SLICE_X8Y23.DMUX     Tcind                 0.320   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X12Y24.B6      net (fanout=8)        0.915   M_adder1_sum1[7]
+    SLICE_X12Y24.B       Tilo                  0.254   M_state_q_FSM_FFd4-In20
+                                                       alu1/Mmux_alu98_1
+    SLICE_X11Y21.A3      net (fanout=11)       1.161   Mmux_alu98
+    SLICE_X11Y21.A       Tilo                  0.259   M_state_q_FSM_FFd3-In5
+                                                       M_state_q_FSM_FFd2-In8_SW0
+    SLICE_X13Y31.D5      net (fanout=1)        1.386   N108
+    SLICE_X13Y31.D       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In13
+    SLICE_X13Y31.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd2-In14
+    SLICE_X13Y31.C       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In14
+    SLICE_X13Y38.D3      net (fanout=4)        1.076   M_state_q_FSM_FFd2-In
+    SLICE_X13Y38.CLK     Tas                   0.264   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2-In_rt
+                                                       M_state_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.631ns (8.296ns logic, 12.335ns route)
+                                                       (40.2% logic, 59.8% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.657ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd5_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.622ns (Levels of Logic = 15)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd5_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D2      net (fanout=8)        0.794   M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D       Tilo                  0.254   M_state_q_FSM_FFd4_2
+                                                       Mmux_M_alu1_a61
+    SLICE_X12Y39.AX      net (fanout=16)       0.681   M_alu1_a[2]
+    SLICE_X12Y39.COUT    Taxcy                 0.248   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M0        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.A5       net (fanout=1)        0.925   alu1/adder1/n0035[0]
+    SLICE_X8Y22.COUT     Topcya                0.474   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<0>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X8Y23.CIN      net (fanout=1)        0.003   alu1/adder1/Mmux_sum3_rs_cy[3]
+    SLICE_X8Y23.BMUX     Tcinb                 0.310   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X13Y24.A6      net (fanout=4)        0.966   M_adder1_sum1[5]
+    SLICE_X13Y24.A       Tilo                  0.259   N51
+                                                       alu1/Mmux_alu78_2
+    SLICE_X14Y23.CX      net (fanout=19)       0.750   Mmux_alu781
+    SLICE_X14Y23.CMUX    Tcxc                  0.192   M_alu1_alufn[0]
+                                                       M_state_q_FSM_FFd5-In6_SW1
+    SLICE_X9Y30.C3       net (fanout=1)        1.252   N84
+    SLICE_X9Y30.C        Tilo                  0.259   M_state_q_FSM_FFd5-In12
+                                                       M_state_q_FSM_FFd5-In8
+    SLICE_X13Y32.C5      net (fanout=1)        0.950   M_state_q_FSM_FFd5-In12
+    SLICE_X13Y32.C       Tilo                  0.259   M_state_q_FSM_FFd5
+                                                       M_state_q_FSM_FFd5-In18
+    SLICE_X13Y38.AX      net (fanout=3)        0.893   M_state_q_FSM_FFd5-In
+    SLICE_X13Y38.CLK     Tdick                 0.114   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd5_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.622ns (8.200ns logic, 12.422ns route)
+                                                       (39.8% logic, 60.2% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.654ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.619ns (Levels of Logic = 17)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D2      net (fanout=8)        0.794   M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D       Tilo                  0.254   M_state_q_FSM_FFd4_2
+                                                       Mmux_M_alu1_a61
+    SLICE_X12Y39.AX      net (fanout=16)       0.681   M_alu1_a[2]
+    SLICE_X12Y39.CMUX    Taxc                  0.391   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X14Y37.D5      net (fanout=4)        0.709   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[4]
+    SLICE_X14Y37.D       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/a[4]_GND_7_o_MUX_201_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o141
+    SLICE_X10Y36.DX      net (fanout=2)        1.070   alu1/adder1/a[7]_b[7]_div_7/a[4]_GND_7_o_MUX_201_o
+    SLICE_X10Y36.COUT    Tdxcy                 0.121   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_cy[4]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_cy<4>
+    SLICE_X10Y37.CIN     net (fanout=1)        0.003   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_cy[4]
+    SLICE_X10Y37.BMUX    Tcinb                 0.277   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_15_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y41.A3      net (fanout=1)        0.838   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_15_OUT[6]
+    SLICE_X11Y41.A       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/N639
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2_SW0
+    SLICE_X10Y38.B6      net (fanout=2)        0.573   alu1/adder1/a[7]_b[7]_div_7/N34
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M0        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.A5       net (fanout=1)        0.925   alu1/adder1/n0035[0]
+    SLICE_X8Y22.COUT     Topcya                0.474   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<0>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X8Y23.CIN      net (fanout=1)        0.003   alu1/adder1/Mmux_sum3_rs_cy[3]
+    SLICE_X8Y23.AMUX     Tcina                 0.220   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X8Y21.D6       net (fanout=4)        0.401   M_adder1_sum1[4]
+    SLICE_X8Y21.D        Tilo                  0.254   Mmux_alu69
+                                                       alu1/Mmux_alu69_1
+    SLICE_X10Y20.B5      net (fanout=5)        0.615   Mmux_alu69
+    SLICE_X10Y20.B       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       M_state_q_FSM_FFd2-In11
+    SLICE_X11Y21.A1      net (fanout=1)        0.928   M_state_q_FSM_FFd2-In12
+    SLICE_X11Y21.A       Tilo                  0.259   M_state_q_FSM_FFd3-In5
+                                                       M_state_q_FSM_FFd2-In8_SW0
+    SLICE_X13Y31.D5      net (fanout=1)        1.386   N108
+    SLICE_X13Y31.D       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In13
+    SLICE_X13Y31.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd2-In14
+    SLICE_X13Y31.C       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In14
+    SLICE_X13Y38.D3      net (fanout=4)        1.076   M_state_q_FSM_FFd2-In
+    SLICE_X13Y38.CLK     Tas                   0.264   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2-In_rt
+                                                       M_state_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.619ns (8.643ns logic, 11.976ns route)
+                                                       (41.9% logic, 58.1% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.651ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.616ns (Levels of Logic = 16)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D2      net (fanout=8)        0.794   M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D       Tilo                  0.254   M_state_q_FSM_FFd4_2
+                                                       Mmux_M_alu1_a61
+    SLICE_X12Y39.AX      net (fanout=16)       0.681   M_alu1_a[2]
+    SLICE_X12Y39.CMUX    Taxc                  0.391   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X14Y37.D5      net (fanout=4)        0.709   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[4]
+    SLICE_X14Y37.D       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/a[4]_GND_7_o_MUX_201_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o141
+    SLICE_X10Y36.DX      net (fanout=2)        1.070   alu1/adder1/a[7]_b[7]_div_7/a[4]_GND_7_o_MUX_201_o
+    SLICE_X10Y36.COUT    Tdxcy                 0.121   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_cy[4]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_cy<4>
+    SLICE_X10Y37.CIN     net (fanout=1)        0.003   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_cy[4]
+    SLICE_X10Y37.BMUX    Tcinb                 0.277   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_15_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y41.A3      net (fanout=1)        0.838   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_15_OUT[6]
+    SLICE_X11Y41.A       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/N639
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2_SW0
+    SLICE_X10Y38.B6      net (fanout=2)        0.573   alu1/adder1/a[7]_b[7]_div_7/N34
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M0        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.A5       net (fanout=1)        0.925   alu1/adder1/n0035[0]
+    SLICE_X8Y22.COUT     Topcya                0.474   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<0>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X8Y23.CIN      net (fanout=1)        0.003   alu1/adder1/Mmux_sum3_rs_cy[3]
+    SLICE_X8Y23.DMUX     Tcind                 0.320   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X12Y24.B6      net (fanout=8)        0.915   M_adder1_sum1[7]
+    SLICE_X12Y24.B       Tilo                  0.254   M_state_q_FSM_FFd4-In20
+                                                       alu1/Mmux_alu98_1
+    SLICE_X11Y21.A3      net (fanout=11)       1.161   Mmux_alu98
+    SLICE_X11Y21.A       Tilo                  0.259   M_state_q_FSM_FFd3-In5
+                                                       M_state_q_FSM_FFd2-In8_SW0
+    SLICE_X13Y31.D5      net (fanout=1)        1.386   N108
+    SLICE_X13Y31.D       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In13
+    SLICE_X13Y31.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd2-In14
+    SLICE_X13Y31.C       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In14
+    SLICE_X13Y38.D3      net (fanout=4)        1.076   M_state_q_FSM_FFd2-In
+    SLICE_X13Y38.CLK     Tas                   0.264   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2-In_rt
+                                                       M_state_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.616ns (8.508ns logic, 12.108ns route)
+                                                       (41.3% logic, 58.7% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.631ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd4_3 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.585ns (Levels of Logic = 16)
+  Clock Path Skew:      -0.011ns (0.186 - 0.197)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd4_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X15Y39.A1      net (fanout=8)        0.818   M_state_q_FSM_FFd2_1
+    SLICE_X15Y39.A       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/N581
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_185_o141
+    SLICE_X12Y39.CX      net (fanout=2)        0.700   alu1/adder1/a[7]_b[7]_div_7/a[4]_GND_7_o_MUX_181_o
+    SLICE_X12Y39.COUT    Tcxcy                 0.117   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M0        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.A5       net (fanout=1)        0.925   alu1/adder1/n0035[0]
+    SLICE_X8Y22.DMUX     Topad                 0.667   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<0>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X11Y20.B6      net (fanout=10)       0.621   M_adder1_sum1[3]
+    SLICE_X11Y20.B       Tilo                  0.259   M_state_q_FSM_FFd3-In17
+                                                       alu1/Mmux_alu59_1
+    SLICE_X8Y21.C5       net (fanout=8)        0.695   Mmux_alu59
+    SLICE_X8Y21.C        Tilo                  0.255   Mmux_alu69
+                                                       M_state_q_FSM_FFd4-In15_SW2
+    SLICE_X12Y24.D4      net (fanout=1)        0.942   N233
+    SLICE_X12Y24.D       Tilo                  0.254   M_state_q_FSM_FFd4-In20
+                                                       M_state_q_FSM_FFd4-In15
+    SLICE_X12Y24.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd4-In20
+    SLICE_X12Y24.C       Tilo                  0.255   M_state_q_FSM_FFd4-In20
+                                                       M_state_q_FSM_FFd4-In16_SW0
+    SLICE_X13Y27.A1      net (fanout=1)        0.937   N122
+    SLICE_X13Y27.A       Tilo                  0.259   M_state_q_FSM_FFd4-In11
+                                                       M_state_q_FSM_FFd4-In17
+    SLICE_X12Y38.A4      net (fanout=4)        1.240   M_state_q_FSM_FFd4-In
+    SLICE_X12Y38.CLK     Tas                   0.200   M_state_q_FSM_FFd1_3
+                                                       M_state_q_FSM_FFd4-In_rt
+                                                       M_state_q_FSM_FFd4_3
+    -------------------------------------------------  ---------------------------
+    Total                                     20.585ns (8.356ns logic, 12.229ns route)
+                                                       (40.6% logic, 59.4% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.629ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.594ns (Levels of Logic = 17)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X15Y39.A1      net (fanout=8)        0.818   M_state_q_FSM_FFd2_1
+    SLICE_X15Y39.A       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/N581
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_185_o141
+    SLICE_X12Y39.CX      net (fanout=2)        0.700   alu1/adder1/a[7]_b[7]_div_7/a[4]_GND_7_o_MUX_181_o
+    SLICE_X12Y39.COUT    Tcxcy                 0.117   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M1        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.B6       net (fanout=1)        0.856   alu1/adder1/n0035[1]
+    SLICE_X8Y22.COUT     Topcyb                0.483   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<1>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X8Y23.CIN      net (fanout=1)        0.003   alu1/adder1/Mmux_sum3_rs_cy[3]
+    SLICE_X8Y23.BMUX     Tcinb                 0.310   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X10Y20.C6      net (fanout=4)        0.649   M_adder1_sum1[5]
+    SLICE_X10Y20.C       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       alu1/Mmux_alu78_1
+    SLICE_X10Y20.B4      net (fanout=4)        0.316   Mmux_alu78
+    SLICE_X10Y20.B       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       M_state_q_FSM_FFd2-In11
+    SLICE_X11Y21.A1      net (fanout=1)        0.928   M_state_q_FSM_FFd2-In12
+    SLICE_X11Y21.A       Tilo                  0.259   M_state_q_FSM_FFd3-In5
+                                                       M_state_q_FSM_FFd2-In8_SW0
+    SLICE_X13Y31.D5      net (fanout=1)        1.386   N108
+    SLICE_X13Y31.D       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In13
+    SLICE_X13Y31.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd2-In14
+    SLICE_X13Y31.C       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In14
+    SLICE_X13Y38.D3      net (fanout=4)        1.076   M_state_q_FSM_FFd2-In
+    SLICE_X13Y38.CLK     Tas                   0.264   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2-In_rt
+                                                       M_state_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.594ns (8.511ns logic, 12.083ns route)
+                                                       (41.3% logic, 58.7% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.628ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd4_2 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.585ns (Levels of Logic = 15)
+  Clock Path Skew:      -0.008ns (0.189 - 0.197)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd4_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D2      net (fanout=8)        0.794   M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D       Tilo                  0.254   M_state_q_FSM_FFd4_2
+                                                       Mmux_M_alu1_a61
+    SLICE_X12Y39.AX      net (fanout=16)       0.681   M_alu1_a[2]
+    SLICE_X12Y39.COUT    Taxcy                 0.248   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M1        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.B6       net (fanout=1)        0.856   alu1/adder1/n0035[1]
+    SLICE_X8Y22.DMUX     Topbd                 0.695   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<1>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X11Y20.B6      net (fanout=10)       0.621   M_adder1_sum1[3]
+    SLICE_X11Y20.B       Tilo                  0.259   M_state_q_FSM_FFd3-In17
+                                                       alu1/Mmux_alu59_1
+    SLICE_X8Y21.C5       net (fanout=8)        0.695   Mmux_alu59
+    SLICE_X8Y21.C        Tilo                  0.255   Mmux_alu69
+                                                       M_state_q_FSM_FFd4-In15_SW2
+    SLICE_X12Y24.D4      net (fanout=1)        0.942   N233
+    SLICE_X12Y24.D       Tilo                  0.254   M_state_q_FSM_FFd4-In20
+                                                       M_state_q_FSM_FFd4-In15
+    SLICE_X12Y24.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd4-In20
+    SLICE_X12Y24.C       Tilo                  0.255   M_state_q_FSM_FFd4-In20
+                                                       M_state_q_FSM_FFd4-In16_SW0
+    SLICE_X13Y27.A1      net (fanout=1)        0.937   N122
+    SLICE_X13Y27.A       Tilo                  0.259   M_state_q_FSM_FFd4-In11
+                                                       M_state_q_FSM_FFd4-In17
+    SLICE_X12Y37.AX      net (fanout=4)        1.313   M_state_q_FSM_FFd4-In
+    SLICE_X12Y37.CLK     Tdick                 0.085   M_state_q_FSM_FFd4_2
+                                                       M_state_q_FSM_FFd4_2
+    -------------------------------------------------  ---------------------------
+    Total                                     20.585ns (8.395ns logic, 12.190ns route)
+                                                       (40.8% logic, 59.2% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.616ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd4_3 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.570ns (Levels of Logic = 16)
+  Clock Path Skew:      -0.011ns (0.186 - 0.197)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd4_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D2      net (fanout=8)        0.794   M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D       Tilo                  0.254   M_state_q_FSM_FFd4_2
+                                                       Mmux_M_alu1_a61
+    SLICE_X12Y39.AX      net (fanout=16)       0.681   M_alu1_a[2]
+    SLICE_X12Y39.CMUX    Taxc                  0.391   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X14Y37.D5      net (fanout=4)        0.709   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[4]
+    SLICE_X14Y37.D       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/a[4]_GND_7_o_MUX_201_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o141
+    SLICE_X10Y36.DX      net (fanout=2)        1.070   alu1/adder1/a[7]_b[7]_div_7/a[4]_GND_7_o_MUX_201_o
+    SLICE_X10Y36.COUT    Tdxcy                 0.121   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_cy[4]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_cy<4>
+    SLICE_X10Y37.CIN     net (fanout=1)        0.003   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_cy[4]
+    SLICE_X10Y37.BMUX    Tcinb                 0.277   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_15_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y41.A3      net (fanout=1)        0.838   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_15_OUT[6]
+    SLICE_X11Y41.A       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/N639
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2_SW0
+    SLICE_X10Y38.B6      net (fanout=2)        0.573   alu1/adder1/a[7]_b[7]_div_7/N34
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M0        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.A5       net (fanout=1)        0.925   alu1/adder1/n0035[0]
+    SLICE_X8Y22.DMUX     Topad                 0.667   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<0>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X11Y20.B6      net (fanout=10)       0.621   M_adder1_sum1[3]
+    SLICE_X11Y20.B       Tilo                  0.259   M_state_q_FSM_FFd3-In17
+                                                       alu1/Mmux_alu59_1
+    SLICE_X8Y21.C5       net (fanout=8)        0.695   Mmux_alu59
+    SLICE_X8Y21.C        Tilo                  0.255   Mmux_alu69
+                                                       M_state_q_FSM_FFd4-In15_SW2
+    SLICE_X12Y24.D4      net (fanout=1)        0.942   N233
+    SLICE_X12Y24.D       Tilo                  0.254   M_state_q_FSM_FFd4-In20
+                                                       M_state_q_FSM_FFd4-In15
+    SLICE_X12Y24.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd4-In20
+    SLICE_X12Y24.C       Tilo                  0.255   M_state_q_FSM_FFd4-In20
+                                                       M_state_q_FSM_FFd4-In16_SW0
+    SLICE_X13Y27.A1      net (fanout=1)        0.937   N122
+    SLICE_X13Y27.A       Tilo                  0.259   M_state_q_FSM_FFd4-In11
+                                                       M_state_q_FSM_FFd4-In17
+    SLICE_X12Y38.A4      net (fanout=4)        1.240   M_state_q_FSM_FFd4-In
+    SLICE_X12Y38.CLK     Tas                   0.200   M_state_q_FSM_FFd1_3
+                                                       M_state_q_FSM_FFd4-In_rt
+                                                       M_state_q_FSM_FFd4_3
+    -------------------------------------------------  ---------------------------
+    Total                                     20.570ns (8.568ns logic, 12.002ns route)
+                                                       (41.7% logic, 58.3% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.615ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd1_1 (FF)
+  Destination:          M_state_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.569ns (Levels of Logic = 17)
+  Clock Path Skew:      -0.011ns (0.186 - 0.197)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd1_1 to M_state_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X12Y38.AQ      Tcko                  0.525   M_state_q_FSM_FFd1_3
+                                                       M_state_q_FSM_FFd1_1
+    SLICE_X15Y39.A5      net (fanout=12)       0.726   M_state_q_FSM_FFd1_1
+    SLICE_X15Y39.A       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/N581
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_185_o141
+    SLICE_X12Y39.CX      net (fanout=2)        0.700   alu1/adder1/a[7]_b[7]_div_7/a[4]_GND_7_o_MUX_181_o
+    SLICE_X12Y39.COUT    Tcxcy                 0.117   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M0        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.A5       net (fanout=1)        0.925   alu1/adder1/n0035[0]
+    SLICE_X8Y22.COUT     Topcya                0.474   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<0>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X8Y23.CIN      net (fanout=1)        0.003   alu1/adder1/Mmux_sum3_rs_cy[3]
+    SLICE_X8Y23.BMUX     Tcinb                 0.310   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X10Y20.C6      net (fanout=4)        0.649   M_adder1_sum1[5]
+    SLICE_X10Y20.C       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       alu1/Mmux_alu78_1
+    SLICE_X10Y20.B4      net (fanout=4)        0.316   Mmux_alu78
+    SLICE_X10Y20.B       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       M_state_q_FSM_FFd2-In11
+    SLICE_X11Y21.A1      net (fanout=1)        0.928   M_state_q_FSM_FFd2-In12
+    SLICE_X11Y21.A       Tilo                  0.259   M_state_q_FSM_FFd3-In5
+                                                       M_state_q_FSM_FFd2-In8_SW0
+    SLICE_X13Y31.D5      net (fanout=1)        1.386   N108
+    SLICE_X13Y31.D       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In13
+    SLICE_X13Y31.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd2-In14
+    SLICE_X13Y31.C       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In14
+    SLICE_X13Y38.D3      net (fanout=4)        1.076   M_state_q_FSM_FFd2-In
+    SLICE_X13Y38.CLK     Tas                   0.264   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2-In_rt
+                                                       M_state_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.569ns (8.509ns logic, 12.060ns route)
+                                                       (41.4% logic, 58.6% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.614ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.579ns (Levels of Logic = 17)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D2      net (fanout=8)        0.794   M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D       Tilo                  0.254   M_state_q_FSM_FFd4_2
+                                                       Mmux_M_alu1_a61
+    SLICE_X12Y39.AX      net (fanout=16)       0.681   M_alu1_a[2]
+    SLICE_X12Y39.CMUX    Taxc                  0.391   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X14Y37.D5      net (fanout=4)        0.709   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[4]
+    SLICE_X14Y37.D       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/a[4]_GND_7_o_MUX_201_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o141
+    SLICE_X10Y36.DX      net (fanout=2)        1.070   alu1/adder1/a[7]_b[7]_div_7/a[4]_GND_7_o_MUX_201_o
+    SLICE_X10Y36.COUT    Tdxcy                 0.121   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_cy[4]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_cy<4>
+    SLICE_X10Y37.CIN     net (fanout=1)        0.003   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_cy[4]
+    SLICE_X10Y37.BMUX    Tcinb                 0.277   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_15_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y41.A3      net (fanout=1)        0.838   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_15_OUT[6]
+    SLICE_X11Y41.A       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/N639
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2_SW0
+    SLICE_X10Y38.B6      net (fanout=2)        0.573   alu1/adder1/a[7]_b[7]_div_7/N34
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M1        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.B6       net (fanout=1)        0.856   alu1/adder1/n0035[1]
+    SLICE_X8Y22.COUT     Topcyb                0.483   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<1>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X8Y23.CIN      net (fanout=1)        0.003   alu1/adder1/Mmux_sum3_rs_cy[3]
+    SLICE_X8Y23.BMUX     Tcinb                 0.310   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X10Y20.C6      net (fanout=4)        0.649   M_adder1_sum1[5]
+    SLICE_X10Y20.C       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       alu1/Mmux_alu78_1
+    SLICE_X10Y20.B4      net (fanout=4)        0.316   Mmux_alu78
+    SLICE_X10Y20.B       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       M_state_q_FSM_FFd2-In11
+    SLICE_X11Y21.A1      net (fanout=1)        0.928   M_state_q_FSM_FFd2-In12
+    SLICE_X11Y21.A       Tilo                  0.259   M_state_q_FSM_FFd3-In5
+                                                       M_state_q_FSM_FFd2-In8_SW0
+    SLICE_X13Y31.D5      net (fanout=1)        1.386   N108
+    SLICE_X13Y31.D       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In13
+    SLICE_X13Y31.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd2-In14
+    SLICE_X13Y31.C       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In14
+    SLICE_X13Y38.D3      net (fanout=4)        1.076   M_state_q_FSM_FFd2-In
+    SLICE_X13Y38.CLK     Tas                   0.264   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2-In_rt
+                                                       M_state_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.579ns (8.723ns logic, 11.856ns route)
+                                                       (42.4% logic, 57.6% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.610ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.575ns (Levels of Logic = 17)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D2      net (fanout=8)        0.794   M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D       Tilo                  0.254   M_state_q_FSM_FFd4_2
+                                                       Mmux_M_alu1_a61
+    SLICE_X12Y39.AX      net (fanout=16)       0.681   M_alu1_a[2]
+    SLICE_X12Y39.COUT    Taxcy                 0.248   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X9Y41.D3       net (fanout=12)       0.900   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X9Y41.D        Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/N631
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW6
+    SLICE_X10Y38.A3      net (fanout=1)        0.837   alu1/adder1/a[7]_b[7]_div_7/N631
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M0        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.A5       net (fanout=1)        0.925   alu1/adder1/n0035[0]
+    SLICE_X8Y22.COUT     Topcya                0.474   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<0>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X8Y23.CIN      net (fanout=1)        0.003   alu1/adder1/Mmux_sum3_rs_cy[3]
+    SLICE_X8Y23.BMUX     Tcinb                 0.310   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X10Y20.C6      net (fanout=4)        0.649   M_adder1_sum1[5]
+    SLICE_X10Y20.C       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       alu1/Mmux_alu78_1
+    SLICE_X10Y20.B4      net (fanout=4)        0.316   Mmux_alu78
+    SLICE_X10Y20.B       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       M_state_q_FSM_FFd2-In11
+    SLICE_X11Y21.A1      net (fanout=1)        0.928   M_state_q_FSM_FFd2-In12
+    SLICE_X11Y21.A       Tilo                  0.259   M_state_q_FSM_FFd3-In5
+                                                       M_state_q_FSM_FFd2-In8_SW0
+    SLICE_X13Y31.D5      net (fanout=1)        1.386   N108
+    SLICE_X13Y31.D       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In13
+    SLICE_X13Y31.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd2-In14
+    SLICE_X13Y31.C       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In14
+    SLICE_X13Y38.D3      net (fanout=4)        1.076   M_state_q_FSM_FFd2-In
+    SLICE_X13Y38.CLK     Tas                   0.264   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2-In_rt
+                                                       M_state_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.575ns (8.652ns logic, 11.923ns route)
+                                                       (42.1% logic, 57.9% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.609ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.574ns (Levels of Logic = 17)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X15Y39.A1      net (fanout=8)        0.818   M_state_q_FSM_FFd2_1
+    SLICE_X15Y39.A       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/N581
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_185_o141
+    SLICE_X12Y39.CX      net (fanout=2)        0.700   alu1/adder1/a[7]_b[7]_div_7/a[4]_GND_7_o_MUX_181_o
+    SLICE_X12Y39.COUT    Tcxcy                 0.117   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M1        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.B6       net (fanout=1)        0.856   alu1/adder1/n0035[1]
+    SLICE_X8Y22.COUT     Topcyb                0.483   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<1>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X8Y23.CIN      net (fanout=1)        0.003   alu1/adder1/Mmux_sum3_rs_cy[3]
+    SLICE_X8Y23.AMUX     Tcina                 0.220   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X8Y21.D6       net (fanout=4)        0.401   M_adder1_sum1[4]
+    SLICE_X8Y21.D        Tilo                  0.254   Mmux_alu69
+                                                       alu1/Mmux_alu69_1
+    SLICE_X10Y20.B5      net (fanout=5)        0.615   Mmux_alu69
+    SLICE_X10Y20.B       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       M_state_q_FSM_FFd2-In11
+    SLICE_X11Y21.A1      net (fanout=1)        0.928   M_state_q_FSM_FFd2-In12
+    SLICE_X11Y21.A       Tilo                  0.259   M_state_q_FSM_FFd3-In5
+                                                       M_state_q_FSM_FFd2-In8_SW0
+    SLICE_X13Y31.D5      net (fanout=1)        1.386   N108
+    SLICE_X13Y31.D       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In13
+    SLICE_X13Y31.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd2-In14
+    SLICE_X13Y31.C       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In14
+    SLICE_X13Y38.D3      net (fanout=4)        1.076   M_state_q_FSM_FFd2-In
+    SLICE_X13Y38.CLK     Tas                   0.264   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2-In_rt
+                                                       M_state_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.574ns (8.440ns logic, 12.134ns route)
+                                                       (41.0% logic, 59.0% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.607ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd4_3 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.561ns (Levels of Logic = 16)
+  Clock Path Skew:      -0.011ns (0.186 - 0.197)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd4_3
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D2      net (fanout=8)        0.794   M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D       Tilo                  0.254   M_state_q_FSM_FFd4_2
+                                                       Mmux_M_alu1_a61
+    SLICE_X12Y39.AX      net (fanout=16)       0.681   M_alu1_a[2]
+    SLICE_X12Y39.COUT    Taxcy                 0.248   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M0        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.A5       net (fanout=1)        0.925   alu1/adder1/n0035[0]
+    SLICE_X8Y22.BMUX     Topab                 0.532   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<0>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X10Y20.A6      net (fanout=8)        0.627   M_adder1_sum1[1]
+    SLICE_X10Y20.A       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       alu1/Mmux_alu39_1
+    SLICE_X8Y21.C4       net (fanout=9)        0.741   Mmux_alu39
+    SLICE_X8Y21.C        Tilo                  0.255   Mmux_alu69
+                                                       M_state_q_FSM_FFd4-In15_SW2
+    SLICE_X12Y24.D4      net (fanout=1)        0.942   N233
+    SLICE_X12Y24.D       Tilo                  0.254   M_state_q_FSM_FFd4-In20
+                                                       M_state_q_FSM_FFd4-In15
+    SLICE_X12Y24.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd4-In20
+    SLICE_X12Y24.C       Tilo                  0.255   M_state_q_FSM_FFd4-In20
+                                                       M_state_q_FSM_FFd4-In16_SW0
+    SLICE_X13Y27.A1      net (fanout=1)        0.937   N122
+    SLICE_X13Y27.A       Tilo                  0.259   M_state_q_FSM_FFd4-In11
+                                                       M_state_q_FSM_FFd4-In17
+    SLICE_X12Y38.A4      net (fanout=4)        1.240   M_state_q_FSM_FFd4-In
+    SLICE_X12Y38.CLK     Tas                   0.200   M_state_q_FSM_FFd1_3
+                                                       M_state_q_FSM_FFd4-In_rt
+                                                       M_state_q_FSM_FFd4_3
+    -------------------------------------------------  ---------------------------
+    Total                                     20.561ns (8.323ns logic, 12.238ns route)
+                                                       (40.5% logic, 59.5% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.606ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.571ns (Levels of Logic = 16)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X15Y39.A1      net (fanout=8)        0.818   M_state_q_FSM_FFd2_1
+    SLICE_X15Y39.A       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/N581
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_185_o141
+    SLICE_X12Y39.CX      net (fanout=2)        0.700   alu1/adder1/a[7]_b[7]_div_7/a[4]_GND_7_o_MUX_181_o
+    SLICE_X12Y39.COUT    Tcxcy                 0.117   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M1        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.B6       net (fanout=1)        0.856   alu1/adder1/n0035[1]
+    SLICE_X8Y22.COUT     Topcyb                0.483   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<1>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X8Y23.CIN      net (fanout=1)        0.003   alu1/adder1/Mmux_sum3_rs_cy[3]
+    SLICE_X8Y23.DMUX     Tcind                 0.320   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X12Y24.B6      net (fanout=8)        0.915   M_adder1_sum1[7]
+    SLICE_X12Y24.B       Tilo                  0.254   M_state_q_FSM_FFd4-In20
+                                                       alu1/Mmux_alu98_1
+    SLICE_X11Y21.A3      net (fanout=11)       1.161   Mmux_alu98
+    SLICE_X11Y21.A       Tilo                  0.259   M_state_q_FSM_FFd3-In5
+                                                       M_state_q_FSM_FFd2-In8_SW0
+    SLICE_X13Y31.D5      net (fanout=1)        1.386   N108
+    SLICE_X13Y31.D       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In13
+    SLICE_X13Y31.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd2-In14
+    SLICE_X13Y31.C       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In14
+    SLICE_X13Y38.D3      net (fanout=4)        1.076   M_state_q_FSM_FFd2-In
+    SLICE_X13Y38.CLK     Tas                   0.264   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2-In_rt
+                                                       M_state_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.571ns (8.305ns logic, 12.266ns route)
+                                                       (40.4% logic, 59.6% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.598ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.563ns (Levels of Logic = 15)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D2      net (fanout=8)        0.794   M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D       Tilo                  0.254   M_state_q_FSM_FFd4_2
+                                                       Mmux_M_alu1_a61
+    SLICE_X12Y39.AX      net (fanout=16)       0.681   M_alu1_a[2]
+    SLICE_X12Y39.COUT    Taxcy                 0.248   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M4        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y23.A5       net (fanout=1)        0.904   alu1/adder1/n0035[4]
+    SLICE_X8Y23.DMUX     Topad                 0.667   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<4>
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X12Y24.B6      net (fanout=8)        0.915   M_adder1_sum1[7]
+    SLICE_X12Y24.B       Tilo                  0.254   M_state_q_FSM_FFd4-In20
+                                                       alu1/Mmux_alu98_1
+    SLICE_X11Y21.A3      net (fanout=11)       1.161   Mmux_alu98
+    SLICE_X11Y21.A       Tilo                  0.259   M_state_q_FSM_FFd3-In5
+                                                       M_state_q_FSM_FFd2-In8_SW0
+    SLICE_X13Y31.D5      net (fanout=1)        1.386   N108
+    SLICE_X13Y31.D       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In13
+    SLICE_X13Y31.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd2-In14
+    SLICE_X13Y31.C       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In14
+    SLICE_X13Y38.D3      net (fanout=4)        1.076   M_state_q_FSM_FFd2-In
+    SLICE_X13Y38.CLK     Tas                   0.264   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2-In_rt
+                                                       M_state_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.563ns (8.295ns logic, 12.268ns route)
+                                                       (40.3% logic, 59.7% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.597ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd5_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.562ns (Levels of Logic = 15)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd5_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D2      net (fanout=8)        0.794   M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D       Tilo                  0.254   M_state_q_FSM_FFd4_2
+                                                       Mmux_M_alu1_a61
+    SLICE_X12Y39.AX      net (fanout=16)       0.681   M_alu1_a[2]
+    SLICE_X12Y39.COUT    Taxcy                 0.248   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M1        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.B6       net (fanout=1)        0.856   alu1/adder1/n0035[1]
+    SLICE_X8Y22.COUT     Topcyb                0.483   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<1>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X8Y23.CIN      net (fanout=1)        0.003   alu1/adder1/Mmux_sum3_rs_cy[3]
+    SLICE_X8Y23.BMUX     Tcinb                 0.310   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X13Y24.A6      net (fanout=4)        0.966   M_adder1_sum1[5]
+    SLICE_X13Y24.A       Tilo                  0.259   N51
+                                                       alu1/Mmux_alu78_2
+    SLICE_X14Y23.CX      net (fanout=19)       0.750   Mmux_alu781
+    SLICE_X14Y23.CMUX    Tcxc                  0.192   M_alu1_alufn[0]
+                                                       M_state_q_FSM_FFd5-In6_SW1
+    SLICE_X9Y30.C3       net (fanout=1)        1.252   N84
+    SLICE_X9Y30.C        Tilo                  0.259   M_state_q_FSM_FFd5-In12
+                                                       M_state_q_FSM_FFd5-In8
+    SLICE_X13Y32.C5      net (fanout=1)        0.950   M_state_q_FSM_FFd5-In12
+    SLICE_X13Y32.C       Tilo                  0.259   M_state_q_FSM_FFd5
+                                                       M_state_q_FSM_FFd5-In18
+    SLICE_X13Y38.AX      net (fanout=3)        0.893   M_state_q_FSM_FFd5-In
+    SLICE_X13Y38.CLK     Tdick                 0.114   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd5_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.562ns (8.209ns logic, 12.353ns route)
+                                                       (39.9% logic, 60.1% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.595ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd1_1 (FF)
+  Destination:          M_state_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.549ns (Levels of Logic = 17)
+  Clock Path Skew:      -0.011ns (0.186 - 0.197)
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd1_1 to M_state_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X12Y38.AQ      Tcko                  0.525   M_state_q_FSM_FFd1_3
+                                                       M_state_q_FSM_FFd1_1
+    SLICE_X15Y39.A5      net (fanout=12)       0.726   M_state_q_FSM_FFd1_1
+    SLICE_X15Y39.A       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/N581
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_185_o141
+    SLICE_X12Y39.CX      net (fanout=2)        0.700   alu1/adder1/a[7]_b[7]_div_7/a[4]_GND_7_o_MUX_181_o
+    SLICE_X12Y39.COUT    Tcxcy                 0.117   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X12Y40.CIN     net (fanout=1)        0.082   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+    SLICE_X12Y40.AMUX    Tcina                 0.220   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y38.B5      net (fanout=2)        0.927   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[6]
+    SLICE_X11Y38.B       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_157_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o161
+    SLICE_X10Y41.C4      net (fanout=12)       0.843   alu1/adder1/a[7]_b[7]_div_7/a[6]_GND_7_o_MUX_199_o
+    SLICE_X10Y41.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N634
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<1>1_SW9
+    SLICE_X10Y38.A2      net (fanout=1)        1.080   alu1/adder1/a[7]_b[7]_div_7/N634
+    SLICE_X10Y38.A       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_n028681
+    SLICE_X10Y38.B5      net (fanout=2)        0.445   alu1/adder1/a[7]_b[7]_div_7/n0286[7]
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M0        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.A5       net (fanout=1)        0.925   alu1/adder1/n0035[0]
+    SLICE_X8Y22.COUT     Topcya                0.474   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<0>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X8Y23.CIN      net (fanout=1)        0.003   alu1/adder1/Mmux_sum3_rs_cy[3]
+    SLICE_X8Y23.AMUX     Tcina                 0.220   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X8Y21.D6       net (fanout=4)        0.401   M_adder1_sum1[4]
+    SLICE_X8Y21.D        Tilo                  0.254   Mmux_alu69
+                                                       alu1/Mmux_alu69_1
+    SLICE_X10Y20.B5      net (fanout=5)        0.615   Mmux_alu69
+    SLICE_X10Y20.B       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       M_state_q_FSM_FFd2-In11
+    SLICE_X11Y21.A1      net (fanout=1)        0.928   M_state_q_FSM_FFd2-In12
+    SLICE_X11Y21.A       Tilo                  0.259   M_state_q_FSM_FFd3-In5
+                                                       M_state_q_FSM_FFd2-In8_SW0
+    SLICE_X13Y31.D5      net (fanout=1)        1.386   N108
+    SLICE_X13Y31.D       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In13
+    SLICE_X13Y31.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd2-In14
+    SLICE_X13Y31.C       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In14
+    SLICE_X13Y38.D3      net (fanout=4)        1.076   M_state_q_FSM_FFd2-In
+    SLICE_X13Y38.CLK     Tas                   0.264   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2-In_rt
+                                                       M_state_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.549ns (8.438ns logic, 12.111ns route)
+                                                       (41.1% logic, 58.9% route)
+
+--------------------------------------------------------------------------------
+Slack:                  -0.594ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               M_state_q_FSM_FFd2_1 (FF)
+  Destination:          M_state_q_FSM_FFd2_1 (FF)
+  Requirement:          20.000ns
+  Data Path Delay:      20.559ns (Levels of Logic = 17)
+  Clock Path Skew:      0.000ns
+  Source Clock:         clk_BUFGP rising at 0.000ns
+  Destination Clock:    clk_BUFGP rising at 20.000ns
+  Clock Uncertainty:    0.035ns
+
+  Clock Uncertainty:          0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.070ns
+    Total Input Jitter (TIJ):   0.000ns
+    Discrete Jitter (DJ):       0.000ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path at Slow Process Corner: M_state_q_FSM_FFd2_1 to M_state_q_FSM_FFd2_1
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X13Y38.DMUX    Tshcko                0.518   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D2      net (fanout=8)        0.794   M_state_q_FSM_FFd2_1
+    SLICE_X12Y37.D       Tilo                  0.254   M_state_q_FSM_FFd4_2
+                                                       Mmux_M_alu1_a61
+    SLICE_X12Y39.AX      net (fanout=16)       0.681   M_alu1_a[2]
+    SLICE_X12Y39.CMUX    Taxc                  0.391   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy[5]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_13_OUT_Madd_Madd_cy<5>
+    SLICE_X14Y37.D5      net (fanout=4)        0.709   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_13_OUT[4]
+    SLICE_X14Y37.D       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/a[4]_GND_7_o_MUX_201_o
+                                                       alu1/adder1/a[7]_b[7]_div_7/Mmux_a[0]_GND_7_o_MUX_205_o141
+    SLICE_X10Y36.DX      net (fanout=2)        1.070   alu1/adder1/a[7]_b[7]_div_7/a[4]_GND_7_o_MUX_201_o
+    SLICE_X10Y36.COUT    Tdxcy                 0.121   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_cy[4]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_cy<4>
+    SLICE_X10Y37.CIN     net (fanout=1)        0.003   alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_cy[4]
+    SLICE_X10Y37.BMUX    Tcinb                 0.277   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_15_OUT[7]
+                                                       alu1/adder1/a[7]_b[7]_div_7/Madd_GND_7_o_b[7]_add_15_OUT_Madd_Madd_xor<7>
+    SLICE_X11Y41.A3      net (fanout=1)        0.838   alu1/adder1/a[7]_b[7]_div_7/GND_7_o_b[7]_add_15_OUT[6]
+    SLICE_X11Y41.A       Tilo                  0.259   alu1/adder1/a[7]_b[7]_div_7/N639
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2_SW0
+    SLICE_X10Y38.B6      net (fanout=2)        0.573   alu1/adder1/a[7]_b[7]_div_7/N34
+    SLICE_X10Y38.B       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>1_SW2
+    SLICE_X10Y38.C4      net (fanout=1)        0.371   alu1/adder1/a[7]_b[7]_div_7/N54
+    SLICE_X10Y38.C       Tilo                  0.235   alu1/adder1/a[7]_b[7]_div_7/N55
+                                                       alu1/adder1/a[7]_b[7]_div_7/o<0>2
+    DSP48_X0Y6.B0        net (fanout=1)        1.460   alu1/adder1/a[7]_b[7]_div_7_OUT[0]
+    DSP48_X0Y6.M1        Tdspdo_B_M            3.894   alu1/adder1/Mmult_n0035
+                                                       alu1/adder1/Mmult_n0035
+    SLICE_X8Y22.B6       net (fanout=1)        0.856   alu1/adder1/n0035[1]
+    SLICE_X8Y22.COUT     Topcyb                0.483   alu1/adder1/Mmux_sum3_rs_cy[3]
+                                                       alu1/adder1/Mmux_sum3_rs_lut<1>
+                                                       alu1/adder1/Mmux_sum3_rs_cy<3>
+    SLICE_X8Y23.CIN      net (fanout=1)        0.003   alu1/adder1/Mmux_sum3_rs_cy[3]
+    SLICE_X8Y23.AMUX     Tcina                 0.220   M_adder1_sum1[7]
+                                                       alu1/adder1/Mmux_sum3_rs_xor<7>
+    SLICE_X8Y21.D6       net (fanout=4)        0.401   M_adder1_sum1[4]
+    SLICE_X8Y21.D        Tilo                  0.254   Mmux_alu69
+                                                       alu1/Mmux_alu69_1
+    SLICE_X10Y20.B5      net (fanout=5)        0.615   Mmux_alu69
+    SLICE_X10Y20.B       Tilo                  0.235   M_state_q_FSM_FFd3-In18
+                                                       M_state_q_FSM_FFd2-In11
+    SLICE_X11Y21.A1      net (fanout=1)        0.928   M_state_q_FSM_FFd2-In12
+    SLICE_X11Y21.A       Tilo                  0.259   M_state_q_FSM_FFd3-In5
+                                                       M_state_q_FSM_FFd2-In8_SW0
+    SLICE_X13Y31.D5      net (fanout=1)        1.386   N108
+    SLICE_X13Y31.D       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In13
+    SLICE_X13Y31.C6      net (fanout=1)        0.143   M_state_q_FSM_FFd2-In14
+    SLICE_X13Y31.C       Tilo                  0.259   M_state_q_FSM_FFd2
+                                                       M_state_q_FSM_FFd2-In14
+    SLICE_X13Y38.D3      net (fanout=4)        1.076   M_state_q_FSM_FFd2-In
+    SLICE_X13Y38.CLK     Tas                   0.264   M_state_q_FSM_FFd3_1
+                                                       M_state_q_FSM_FFd2-In_rt
+                                                       M_state_q_FSM_FFd2_1
+    -------------------------------------------------  ---------------------------
+    Total                                     20.559ns (8.652ns logic, 11.907ns route)
+                                                       (42.1% logic, 57.9% route)
+
+--------------------------------------------------------------------------------
+
+Component Switching Limit Checks: TS_clk = PERIOD TIMEGRP "clk" 50 MHz HIGH 50%;
+--------------------------------------------------------------------------------
+Slack: 17.334ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 2.666ns (375.094MHz) (Tbcper_I)
+  Physical resource: clk_BUFGP/BUFG/I0
+  Logical resource: clk_BUFGP/BUFG/I0
+  Location pin: BUFGMUX_X2Y11.I0
+  Clock network: clk_BUFGP/IBUFG
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: ctr/M_ctr_q[3]/CLK
+  Logical resource: ctr/M_ctr_q_0/CK
+  Location pin: SLICE_X12Y52.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: ctr/M_ctr_q[3]/CLK
+  Logical resource: ctr/M_ctr_q_1/CK
+  Location pin: SLICE_X12Y52.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: ctr/M_ctr_q[3]/CLK
+  Logical resource: ctr/M_ctr_q_2/CK
+  Location pin: SLICE_X12Y52.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: ctr/M_ctr_q[3]/CLK
+  Logical resource: ctr/M_ctr_q_3/CK
+  Location pin: SLICE_X12Y52.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: ctr/M_ctr_q[7]/CLK
+  Logical resource: ctr/M_ctr_q_4/CK
+  Location pin: SLICE_X12Y53.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: ctr/M_ctr_q[7]/CLK
+  Logical resource: ctr/M_ctr_q_5/CK
+  Location pin: SLICE_X12Y53.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: ctr/M_ctr_q[7]/CLK
+  Logical resource: ctr/M_ctr_q_6/CK
+  Location pin: SLICE_X12Y53.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: ctr/M_ctr_q[7]/CLK
+  Logical resource: ctr/M_ctr_q_7/CK
+  Location pin: SLICE_X12Y53.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: ctr/M_ctr_q[11]/CLK
+  Logical resource: ctr/M_ctr_q_8/CK
+  Location pin: SLICE_X12Y54.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: ctr/M_ctr_q[11]/CLK
+  Logical resource: ctr/M_ctr_q_9/CK
+  Location pin: SLICE_X12Y54.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: ctr/M_ctr_q[11]/CLK
+  Logical resource: ctr/M_ctr_q_10/CK
+  Location pin: SLICE_X12Y54.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: ctr/M_ctr_q[11]/CLK
+  Logical resource: ctr/M_ctr_q_11/CK
+  Location pin: SLICE_X12Y54.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: ctr/M_ctr_q[15]/CLK
+  Logical resource: ctr/M_ctr_q_12/CK
+  Location pin: SLICE_X12Y55.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: ctr/M_ctr_q[15]/CLK
+  Logical resource: ctr/M_ctr_q_13/CK
+  Location pin: SLICE_X12Y55.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: ctr/M_ctr_q[15]/CLK
+  Logical resource: ctr/M_ctr_q_14/CK
+  Location pin: SLICE_X12Y55.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: ctr/M_ctr_q[15]/CLK
+  Logical resource: ctr/M_ctr_q_15/CK
+  Location pin: SLICE_X12Y55.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: M_ctr_value[2]/CLK
+  Logical resource: ctr/M_ctr_q_16/CK
+  Location pin: SLICE_X12Y56.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: M_ctr_value[2]/CLK
+  Logical resource: ctr/M_ctr_q_17/CK
+  Location pin: SLICE_X12Y56.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: M_ctr_value[2]/CLK
+  Logical resource: ctr/M_ctr_q_18/CK
+  Location pin: SLICE_X12Y56.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: M_state_q_FSM_FFd4_1/CLK
+  Logical resource: M_state_q_FSM_FFd4_1/CK
+  Location pin: SLICE_X12Y36.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: M_state_q_FSM_FFd4_2/CLK
+  Logical resource: M_state_q_FSM_FFd4_2/CK
+  Location pin: SLICE_X12Y37.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: M_state_q_FSM_FFd1_3/CLK
+  Logical resource: M_state_q_FSM_FFd4_3/CK
+  Location pin: SLICE_X12Y38.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - (min high pulse limit / (high pulse / period)))
+  Period: 20.000ns
+  High pulse: 10.000ns
+  High pulse limit: 0.240ns (Trpw)
+  Physical resource: M_state_q_FSM_FFd1_3/SR
+  Logical resource: M_state_q_FSM_FFd4_3/SR
+  Location pin: SLICE_X12Y38.SR
+  Clock network: M_reset_cond_out
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: M_state_q_FSM_FFd1_3/CLK
+  Logical resource: M_state_q_FSM_FFd1_1/CK
+  Location pin: SLICE_X12Y38.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: M_state_q_FSM_FFd1_3/CLK
+  Logical resource: M_state_q_FSM_FFd1_2/CK
+  Location pin: SLICE_X12Y38.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: M_state_q_FSM_FFd1_3/CLK
+  Logical resource: M_state_q_FSM_FFd1_3/CK
+  Location pin: SLICE_X12Y38.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: M_counter_q[15]/CLK
+  Logical resource: M_counter_q_12/CK
+  Location pin: SLICE_X16Y16.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: M_counter_q[15]/CLK
+  Logical resource: M_counter_q_13/CK
+  Location pin: SLICE_X16Y16.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+Slack: 19.520ns (period - min period limit)
+  Period: 20.000ns
+  Min period limit: 0.480ns (2083.333MHz) (Tcp)
+  Physical resource: M_counter_q[15]/CLK
+  Logical resource: M_counter_q_14/CK
+  Location pin: SLICE_X16Y16.CLK
+  Clock network: clk_BUFGP
+--------------------------------------------------------------------------------
+
+
+1 constraint not met.
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |   20.772|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Timing summary:
+---------------
+
+Timing errors: 15  Score: 6987  (Setup/Max: 6987, Hold: 0)
+
+Constraints cover 54744637 paths, 0 nets, and 2182 connections
+
+Design statistics:
+   Minimum period:  20.772ns{1}   (Maximum frequency:  48.142MHz)
+
+
+------------------------------------Footnotes-----------------------------------
+1)  The minimum period statistic assumes all single cycle delays.
+
+Analysis completed Thu Oct 22 23:13:35 2015 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 219 MB
+
+
+
